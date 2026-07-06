@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mbokatech</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Link to our CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER BLOCK -->
+    <header>
+        <div class="header-content">
+            <!-- Left Branding -->
+            <div class="header-left">
+                <h1>
+                    <i class="fa-regular fa-circle-dot"></i> 
+                    𝐃𝐫𝐞𝐚𝐦𝐬 𝐜𝐨𝐦𝐞 𝐭𝐫𝐮𝐞
+                </h1>
+                <p style="margin-top: 5px; color: blue; opacity: 1; font-size: 0.9rem;">
+                    ✦ 𝐹𝑜𝑐𝑢𝑠 𝑜𝑛 𝑦𝑜𝑢𝑟 𝑑𝑟𝑒𝑎𝑚 𝑛𝑒𝑣𝑒𝑟 𝑔𝑖𝑣𝑒 𝑢𝑝. ✧
+                </p>
+            </div>
+            
+            <!-- Right Profile Dropdown Target Button -->
+            <div class="header-right">
+                <div class="profile-dropdown">
+                    <button class="profile-btn" id="profile-toggle">
+                        <div id="profile-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </button>
+                    
+                    <!-- Dropdown Contents Menu -->
+                    <div class="dropdown-content" id="profile-dropdown">
+                        <div class="dropdown-header">
+                            <div id="dropdown-profile-pic" style="position: relative; cursor: pointer; overflow: hidden;">
+                                <i class="fas fa-user" id="avatar-icon"></i>
+                                <div class="upload-overlay">
+                                    <i class="fas fa-camera" style="font-size: 0.75rem; color: white;"></i>
+                                </div>
+                            </div>
+                            <input type="file" id="profile-upload-input" accept="image/*" style="display: none;">
+                            <div>
+                                <strong id="display-username">Savings User</strong>
+                                <div style="font-size: 0.85rem; opacity: 0.9;">Member</div>
+                            </div>
+                        </div>
+                        
+                        <div class="dropdown-divider"></div>
+                        
+                        <!-- Navigation Links inside Dropdown -->
+                        <a href="#" class="active-room-link" data-target="dashboard">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                        <a href="#" class="active-room-link" data-target="goal">
+                            <i class="fa-regular fa-circle-dot live-blue-dot"></i> Active bets
+                        </a>
+                        <a href="#" class="active-room-link" data-target="transactions">
+                            <i class="fas fa-history"></i> My bets
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <!-- COLLAPSIBLE PROFILE DROPDOWN SETTINGS ACCORDION -->
+                        <div class="settings-dropdown-accordion" id="settings-accordion-wrapper">
+                            <!-- Click trigger header to expand settings panels -->
+                            <div class="settings-accordion-header" id="settings-accordion-toggle">
+                                <span><i class="fa-solid fa-gear"></i> Settings</span>
+                                <i class="fas fa-chevron-down settings-arrow"></i>
+                            </div>
+                            
+                            <!-- Hidden panel container containing name inputs, themes, and backgrounds -->
+                            <div class="settings-accordion-content">
+                                <!-- Username setting -->
+                                <div class="setting-item-row">
+                                    <label>Username:</label>
+                                    <input type="text" id="settings-username-input" value="Savings User">
+                                </div>
+
+                                <!-- Themes setting -->
+                                <div class="setting-item-row">
+                                    <label>Color Theme:</label>
+                                    <select id="settings-theme-select">
+                                        <option value="default">Default Orange</option>
+                                        <option value="dark">Dark Theme</option>
+                                        <option value="blue">Blue Sky</option>
+                                        <option value="purple">Royal Purple</option>
+                                        <option value="pink">Vibrant Pink</option>
+                                        <option value="gray">Slate Gray</option>
+                                    </select>
+                                </div>
+
+                                <!-- Custom Background setting -->
+                                <div class="setting-item-row">
+                                    <label>Wall Background:</label>
+                                    <button type="button" class="bg-upload-trigger-btn" id="bg-upload-btn"><i class="fa-solid fa-image"></i> Import Image</button>
+                                    <input type="file" id="bg-upload-input" accept="image/*" style="display: none;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation tab controls -->
+        <nav>
+            <button class="nav-btn active" data-page="dashboard">
+                <i class="fas fa-home"></i> Dashboard
+            </button>
+            <button class="nav-btn" data-page="goal">
+                <i class="fa-regular fa-circle-dot live-blue-dot"></i> Active bets
+            </button>
+            <button class="nav-btn" data-page="transactions">
+                <i class="fa-solid fa-clock-rotate-left"></i> My bets
+            </button>
+        </nav>
+    </header>
+
+    <!-- MAIN BODY CONTENT SECTIONS -->
+    <main class="content-container">
+        <!-- Dashboard Section View -->
+        <section id="dashboard-view" class="page-view active">
+            <h2 style="margin-bottom: 15px; color: #1e293b;">Dashboard</h2>
+            
+            <div class="creator-card">
+                <h3><i class="fa-solid fa-square-plus"></i> Create Betslip</h3>
+                <form id="bet-creator-form">
+                    <div class="form-row-base">
+                        <div class="input-group">
+                            <label>Base Stake</label>
+                            <input type="number" id="creator-stake" placeholder="1000" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Total Odds</label>
+                            <input type="number" id="creator-odd-total" value="1.00" readonly style="background-color: #f1f5f9; font-weight: bold; color: #2563eb;">
+                        </div>
+                        <div class="input-group">
+                            <label>Kick-off</label>
+                            <input type="time" id="creator-time" required>
+                        </div>
+                    </div>
+
+                    <!-- Appended Matches Summary Paragraph -->
+                    <div id="added-matches-paragraph" class="added-teams-summary">
+                        No matches staging inside this coupon yet. Append fields below.
+                    </div>
+
+                    <!-- Single Line Accumulator Builder Entry Row -->
+                    <div class="accumulator-input-row">
+                        <input type="text" id="match-home" placeholder="Home Team">
+                        <span class="vs-text">vs</span>
+                        <input type="text" id="match-away" placeholder="Away Team">
+                        <input type="text" id="match-pred" placeholder="Bet (e.g. Over 1.5)" style="width: 110px;">
+                        <input type="number" step="0.01" id="match-odd" placeholder="Odds" style="width: 70px;">
+                        <button type="button" id="add-team-item-btn" class="append-plus-btn"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+
+                    <button type="submit" class="create-slip-btn" style="margin-top: 10px;">Generate Active Slip</button>
+                </form>
+            </div>
+
+            <div class="creator-card" style="margin-top: 20px;">
+                <h3><i class="fa-solid fa-gavel"></i> Open Slip Settlement</h3>
+                <div id="dashboard-active-settlement">
+                    <p style="color: #64748b; font-size: 0.8rem; text-align: center; padding: 10px;">No open un-settled bets slips currently found.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Active Bets Section View -->
+        <section id="goal-view" class="page-view">
+            <h2 style="margin-bottom: 15px; color: #333;">Active Bets</h2>
+            <div id="active-bets-target-list">
+                <p style="color: #64748b; text-align: center; padding: 20px; font-size: 0.85rem;">No current active operations running.</p>
+            </div>
+        </section>
+
+        <!-- My Bets Section View -->
+        <section id="transactions-view" class="page-view">
+            <h2 style="margin-bottom: 15px; color: #333;">Bets History</h2>
+            <div id="history-bets-target-list">
+                <p style="color: #64748b; text-align: center; padding: 20px; font-size: 0.85rem;">No historical data records verified yet.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Link to Javascript file -->
+    <script src="script.js"></script>
+</body>
+  </html>
